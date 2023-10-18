@@ -9,58 +9,50 @@ namespace StudentApp.Controllers
     [Route("api/students")]
     public class StudentsController : ControllerBase
     {
-        public Student[] StudentList { get; set; }
+        private readonly ILogger<StudentsController> _logger;
 
-        public StudentsController()
+        public StudentsController(ILogger<StudentsController> logger)
         {
-            StudentList = new Student[4];
-
-            StudentList[0] = new Student
-            {
-                Number = 112,
-                FirstName = "Hafza",
-                LastName = "Çataklı"
-            };
-
-            StudentList[1] = new Student
-            {
-                Number = 118,
-                FirstName = "Gulbin",
-                LastName = "Beydilli"
-            };
-
-            StudentList[2] = new Student
-            {
-                Number = 120,
-                FirstName = "Berat",
-                LastName = "Gungor"
-            };
-
-            StudentList[3] = new Student
-            {
-                Number = 910,
-                FirstName = "Celal",
-                LastName = "Helilov"
-            };
+            _logger = logger;
         }
 
         [HttpGet] // localhost/api/students
-        public Student[] GetAllStudents()
+        public List<Student> GetAllStudents()
         {
-            return StudentList;
+            _logger.LogInformation($"GetAllStudents has been called.");
+            return StudentRepository.StudentList;
         }
 
         [HttpGet("{id}")] // localhost/api/students/{id}
         public Student GetOneStudent(int id)
         {
-            if (id <= 3)
-            {
-                return StudentList[id];
-            }
-            else
-            {
-                throw new IndexOutOfRangeException($"Ogrenci Bulamadi simdilik {StudentList.Length} var.");
-            }
+           _logger.LogInformation($"GetOneStudent with the id: {id} has beeen called.");
+            return StudentRepository.GetOne(id);
+        }
+
+        [HttpPost]
+
+        public Student CreateOneStudent(Student student)
+        {
+            _logger.LogInformation($"CreateOneStudent has been called.");
+            return StudentRepository.CreateOne(student);
+        }
+
+        [HttpPut("{id:int}")]
+        
+        public Student UpdateOneStudent(int id, Student student)
+        {
+            _logger.LogInformation($"UpdateOneStudent with id : {id} has been called.");
+            StudentRepository.UpdateOne(id,student);
+            return GetOneStudent(id);
+        }
+
+        [HttpDelete("{id:int}")]
+        public void DeleteOneStudent(int id) 
+        {
+            _logger.LogInformation($"DeleteOneStudent with the id: {id} has been called.");
+            StudentRepository.DeleteOne(id);
+        
         }
     }
 }
