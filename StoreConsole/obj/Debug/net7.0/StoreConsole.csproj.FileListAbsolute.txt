@@ -1,0 +1,14 @@
+C:\Users\Abdirashid\MYAZ201\StoreConsole\bin\Debug\net7.0\StoreConsole.exe
+C:\Users\Abdirashid\MYAZ201\StoreConsole\bin\Debug\net7.0\StoreConsole.deps.json
+C:\Users\Abdirashid\MYAZ201\StoreConsole\bin\Debug\net7.0\StoreConsole.runtimeconfig.json
+C:\Users\Abdirashid\MYAZ201\StoreConsole\bin\Debug\net7.0\StoreConsole.dll
+C:\Users\Abdirashid\MYAZ201\StoreConsole\bin\Debug\net7.0\StoreConsole.pdb
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.AssemblyInfoInputs.cache
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.AssemblyInfo.cs
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.csproj.CoreCompileInputs.cache
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.dll
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\refint\StoreConsole.dll
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.pdb
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\StoreConsole.genruntimeconfig.cache
+C:\Users\Abdirashid\MYAZ201\StoreConsole\obj\Debug\net7.0\ref\StoreConsole.dll

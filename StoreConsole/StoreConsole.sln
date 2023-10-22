@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreConsole", "StoreConsole.csproj", "{25EA9691-3C66-4A7D-BA85-20F5CB873CF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25EA9691-3C66-4A7D-BA85-20F5CB873CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25EA9691-3C66-4A7D-BA85-20F5CB873CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25EA9691-3C66-4A7D-BA85-20F5CB873CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25EA9691-3C66-4A7D-BA85-20F5CB873CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D71A5EA-E91A-4058-A824-F62248932FA2}
+	EndGlobalSection
+EndGlobal
