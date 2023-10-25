@@ -1,0 +1,30 @@
+@startuml Models
+
+class Posts{
+    Id: int
+    Title: string
+    PostDate: DateTime
+    Tag: Tags
+    Location: string
+}
+
+class Tags{
+    Id: int
+    TagName: string
+}
+
+class PostsRepository
+{
+    - postList: List<Posts>
+    + GetAllPost() : List<Posts>
+    + GetOnePost(id:int) : Posts
+    + CreateOnePost(post: Posts) : void
+    + UpdateOnePost(id: int, post: Posts): void
+    + DeleteOnePost(id: int): void
+    + DeleteAllPosts(): void
+
+}
+
+Posts - Tags
+
+@enduml
