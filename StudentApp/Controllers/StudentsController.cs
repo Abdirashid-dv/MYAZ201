@@ -10,24 +10,26 @@ namespace StudentApp.Controllers
     public class StudentsController : ControllerBase
     {
         private readonly ILogger<StudentsController> _logger;
+        private readonly StudentRepository _studentRepository;
 
-        public StudentsController(ILogger<StudentsController> logger)
+        public StudentsController(ILogger<StudentsController> logger, StudentRepository studentRepository)
         {
             _logger = logger;
+            this._studentRepository = studentRepository;
         }
 
         [HttpGet] // localhost/api/students
         public List<Student> GetAllStudents()
         {
             _logger.LogInformation($"GetAllStudents has been called.");
-            return StudentRepository.StudentList;
+            return _studentRepository.GetAll();
         }
 
         [HttpGet("{id}")] // localhost/api/students/{id}
         public Student GetOneStudent(int id)
         {
            _logger.LogInformation($"GetOneStudent with the id: {id} has beeen called.");
-            return StudentRepository.GetOne(id);
+            return _studentRepository.GetOne(id);
         }
 
         [HttpPost]
@@ -35,7 +37,7 @@ namespace StudentApp.Controllers
         public Student CreateOneStudent(Student student)
         {
             _logger.LogInformation($"CreateOneStudent has been called.");
-            return StudentRepository.CreateOne(student);
+            return _studentRepository.CreateOne(student);
         }
 
         [HttpPut("{id:int}")]
@@ -43,7 +45,7 @@ namespace StudentApp.Controllers
         public Student UpdateOneStudent(int id, Student student)
         {
             _logger.LogInformation($"UpdateOneStudent with id : {id} has been called.");
-            StudentRepository.UpdateOne(id,student);
+            _studentRepository.UpdateOne(id,student);
             return GetOneStudent(id);
         }
 
@@ -51,7 +53,7 @@ namespace StudentApp.Controllers
         public void DeleteOneStudent(int id) 
         {
             _logger.LogInformation($"DeleteOneStudent with the id: {id} has been called.");
-            StudentRepository.DeleteOne(id);
+            _studentRepository.DeleteOne(id);
         
         }
     }

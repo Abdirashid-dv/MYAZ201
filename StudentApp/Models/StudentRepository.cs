@@ -1,10 +1,10 @@
 ﻿namespace StudentApp.Models
 {
-    public static class StudentRepository
+    public class StudentRepository
     {
-        public static List<Student> StudentList { get; set; }
+        public List<Student> StudentList { get; set; }
 
-        static StudentRepository()
+        public StudentRepository()
         {
             StudentList = new List<Student>();
             StudentList.Add(new Student(){Number = 10, FirstName= "Ahmet", LastName = "Güneş" });
@@ -12,7 +12,7 @@
             StudentList.Add(new Student() { Number = 30, FirstName = "Nuri", LastName = "Irmak" });
         }
 
-        public static Student GetOne(int id)
+        public Student GetOne(int id)
         {
             foreach (var std in StudentList)
             {
@@ -24,19 +24,24 @@
             throw new Exception("Not Found");
         }
 
-        public static void DeleteOne(int id)
+        public List<Student> GetAll()
+        {
+            return StudentList;
+        }
+
+        public void DeleteOne(int id)
         {
             var std = GetOne(id);
             StudentList.Remove(std);
         }
 
-        public static Student CreateOne(Student student)
+        public Student CreateOne(Student student)
         {
             StudentList.Add(student);
             return student;
         }
 
-        public static void UpdateOne(int id, Student student)
+        public void UpdateOne(int id, Student student)
         {
             foreach(var item in StudentList)
             {
