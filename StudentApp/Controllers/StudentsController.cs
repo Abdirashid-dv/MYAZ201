@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using StudentApp.Models;
@@ -19,42 +20,46 @@ namespace StudentApp.Controllers
         }
 
         [HttpGet] // localhost/api/students
-        public List<Student> GetAllStudents()
+        public IActionResult GetAllStudents()
         {
             _logger.LogInformation($"GetAllStudents has been called.");
-            return _studentRepository.GetAll();
+            return Ok(_studentRepository.GetAllStudents());
         }
 
         [HttpGet("{id}")] // localhost/api/students/{id}
-        public Student GetOneStudent(int id)
+        public IActionResult GetOneStudent(int id)
         {
-           _logger.LogInformation($"GetOneStudent with the id: {id} has beeen called.");
-            return _studentRepository.GetOne(id);
+            _logger.LogInformation($"GetOneStudent with the id: {id} has beeen called.");
+            var result = _studentRepository.GetOneStudent(id);
+            return result != null ? Ok(result) : NotFound();
         }
 
         [HttpPost]
 
-        public Student CreateOneStudent(Student student)
+        public IActionResult CreateOneStudent(Student student)
         {
             _logger.LogInformation($"CreateOneStudent has been called.");
-            return _studentRepository.CreateOne(student);
+            var result = _studentRepository.CreateOneStudent(student);
+            return result == null ? BadRequest("This student already created!") : Ok(result);
         }
 
         [HttpPut("{id:int}")]
-        
-        public Student UpdateOneStudent(int id, Student student)
+
+        public IActionResult UpdateOneStudent([FromRoute] int id, [FromBody] Student student)
         {
             _logger.LogInformation($"UpdateOneStudent with id : {id} has been called.");
-            _studentRepository.UpdateOne(id,student);
-            return GetOneStudent(id);
+            var result = _studentRepository.UpdateOneStudent(id, student);
+            return result == 0 ? NotFound("Student not found!") : Ok(GetOneStudent(student.Number));
         }
 
         [HttpDelete("{id:int}")]
-        public void DeleteOneStudent(int id) 
+        public IActionResult DeleteOneStudent(int id)
         {
             _logger.LogInformation($"DeleteOneStudent with the id: {id} has been called.");
-            _studentRepository.DeleteOne(id);
-        
+            var result = _studentRepository.DeleteOneStudent(id);
+            return result == 0 ? NotFound("This student not found!") : Ok("Student Information deleted!");
+
+
         }
     }
 }

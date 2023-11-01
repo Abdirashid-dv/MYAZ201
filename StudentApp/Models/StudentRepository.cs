@@ -7,14 +7,14 @@
         public StudentRepository()
         {
             StudentList = new List<Student>();
-            StudentList.Add(new Student(){Number = 10, FirstName= "Ahmet", LastName = "Güneş" });
-            StudentList.Add(new Student() { Number = 20, FirstName = "Hafza", LastName = "Yildiz"});
+            StudentList.Add(new Student() { Number = 10, FirstName = "Ahmet", LastName = "Güneş" });
+            StudentList.Add(new Student() { Number = 20, FirstName = "Hafza", LastName = "Yildiz" });
             StudentList.Add(new Student() { Number = 30, FirstName = "Nuri", LastName = "Irmak" });
         }
 
-        public Student GetOne(int id)
+        public Student GetOneStudent(int id)
         {
-            foreach (var std in StudentList)
+            /** foreach (var std in StudentList)
             {
                 if (std.Number.Equals(id))
                 {
@@ -22,38 +22,56 @@
                 }
             }
             throw new Exception("Not Found");
+            **/
+            var result = StudentList
+            .Where(std => std.Number.Equals(id))
+            .Single();
+
+            return result;
         }
 
-        public List<Student> GetAll()
+        public List<Student> GetAllStudents()
         {
             return StudentList;
         }
 
-        public void DeleteOne(int id)
+        public int DeleteOneStudent(int id)
         {
-            var std = GetOne(id);
-            StudentList.Remove(std);
+            var std = GetOneStudent(id); // Student : null
+            if (std is not null)
+            {
+                StudentList.Remove(std);
+                return 1;
+            }
+            return 0;
+
         }
 
-        public Student CreateOne(Student student)
+        public Student? CreateOneStudent(Student student)
         {
+            var result = StudentList.Where(std => std.Number.Equals(student.Number))
+            .SingleOrDefault();
+            if (result is not null)
+                return null;
+
             StudentList.Add(student);
             return student;
         }
 
-        public void UpdateOne(int id, Student student)
+        public int UpdateOneStudent(int id, Student student)
         {
-            foreach(var item in StudentList)
+            foreach (var item in StudentList)
             {
                 if (item.Number == id)
                 {
                     item.FirstName = student.FirstName;
                     item.LastName = student.LastName;
                     item.Number = student.Number;
-                    return;
+                    return 1;
                 }
             }
-            throw new Exception("Not Found");
+            return 0;
+
         }
 
     }
