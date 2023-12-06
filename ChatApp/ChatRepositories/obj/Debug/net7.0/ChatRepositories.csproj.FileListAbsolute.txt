@@ -1,0 +1,17 @@
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatRepositories.deps.json
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatRepositories.runtimeconfig.json
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatRepositories.dll
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatRepositories.pdb
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatEntities.dll
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\bin\Debug\net7.0\ChatEntities.pdb
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.csproj.AssemblyReference.cache
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.AssemblyInfoInputs.cache
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.AssemblyInfo.cs
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.csproj.CoreCompileInputs.cache
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.csproj.CopyComplete
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.dll
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\refint\ChatRepositories.dll
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.pdb
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ChatRepositories.genruntimeconfig.cache
+C:\Users\Abdirashid\MYAZ201\ChatApp\ChatRepositories\obj\Debug\net7.0\ref\ChatRepositories.dll
