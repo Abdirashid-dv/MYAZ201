@@ -19,6 +19,7 @@ public class EmployeesController : ControllerBase
     [HttpGet]
     public IActionResult GetAllEmployees()
     {
+        // throw new Exception();
         var employees = _context.Employees.ToList();
         return Ok(employees);
     }

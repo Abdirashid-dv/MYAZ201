@@ -1,3 +1,4 @@
+using EmployeeApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Repositories;
 
@@ -9,10 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<RepositoryContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("sqliteconnection"), prj => prj.MigrationsAssembly("EmployeeApi"));
-});
+
+builder.Services.ConfigureDatabase(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -28,5 +28,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.ConfigureExceptionHandler();
 
 app.Run();
