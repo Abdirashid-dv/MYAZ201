@@ -7,13 +7,14 @@ public static class ServiceExtensions
 {
     public static void ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<RepositoryContext>(options =>
-    {
-        options.UseSqlite(
-        configuration.
-        GetConnectionString("sqliteconnection"),
-        prj => prj.MigrationsAssembly("EmployeeApi"));
-    });
+        services
+        .AddDbContext<RepositoryContext>(options =>
+            {
+                options.UseSqlite(
+                configuration.
+                GetConnectionString("sqliteconnection"),
+                prj => prj.MigrationsAssembly("EmployeeApi"));
+            });
 
     }
 }
