@@ -1,3 +1,4 @@
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
@@ -17,12 +18,69 @@ public class EmployeesController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAllEmployees()
+    public IActionResult GetAllEmployees([FromQuery(Name = "q")] string q = "")
     {
-        // throw new Exception();
-        var employees = _context.Employees.ToList();
+
+        List<Employee> employees;
+
+        if (string.IsNullOrWhiteSpace(q))
+        {
+            employees = _context.Employees.ToList();
+        }
+
+        else
+        {
+            employees = _context
+            .Employees
+            .Where(emp => emp.FirstName.ToLower().Contains(q))
+            .ToList();
+        }
+
         return Ok(employees);
     }
+
+    [HttpGet("orderbyname")]
+    public IActionResult GetAllEmployeesOrderByFirstName()
+    {
+        var employees = _context.Employees
+        .OrderBy(emp => emp.FirstName)
+        .ThenBy(emp => emp.LastName)
+        .ToList();
+
+        return Ok(employees);
+    }
+
+    //filter by salary filter/?min=a&max=b
+    [HttpGet("filter")]
+    public IActionResult Filter([FromQuery(Name = "min")] decimal min,
+    [FromQuery(Name = "max")] decimal max)
+    {
+        var model = _context.Employees
+        .Where(emp => emp.Salary >= min && emp.Salary <= max)
+        .ToList();
+
+        return Ok(model);
+    }
+
+    [HttpGet("search")]
+    public IActionResult GetAllEmployeesWithSearchTerm([FromQuery(Name = "q")] string q)
+    {
+        return Ok("selam canım");
+    }
+
+    [HttpGet("{id:int}")]
+    public IActionResult GetOneEmployee([FromRoute(Name = "id")] int id)
+    {
+        var employee = _context
+        .Employees
+        .SingleOrDefault(emp => emp.EmployeeId.Equals(id));
+
+        if (employee is null)
+            throw new EmployeeNotFoundException(id);
+
+        return Ok(employee);
+    }
+
     [HttpPost]
     public IActionResult CreateOneEmployee(Employee employee)
     {
