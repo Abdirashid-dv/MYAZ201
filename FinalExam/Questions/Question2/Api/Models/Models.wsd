@@ -1,0 +1,52 @@
+@startuml
+
+namespace Microsoft.AspNetCore.Mvc{
+    abstract class ControllerBase{
+
+    }
+}
+
+namespace Models {
+
+    abstract class BaseEntity {
+        + Id: int
+    }
+    
+    class Video <<sealed>> {
+        + Title: string = ""
+        + ReleaseDate: DateTime = DateTime.Now
+        + Views: int
+        + Likes: int
+        + Dislikes: int
+    }
+}
+
+namespace Repositories {
+    class VideoRepository {
+        - _videos: List<Video>
+        + Videos: IEnumerable<Video>
+
+        + VideoRepository()
+        + Add(video: Video): void
+    }
+}
+
+namespace Controllers {
+    class VideosController {
+        - _videoRepository: VideoRepository
+        + VideosController(videoRepository: VideoRepository)
+        + GetAllVideos(): IActionResult
+        + CreateOneVideo(video: Video): IActionResult
+    }
+}
+
+
+
+Models.BaseEntity <|-- Models.Video : "<<inherits>>"
+Controllers.VideosController -up-|>  Microsoft.AspNetCore.Mvc.ControllerBase
+hide empty members
+
+Repositories.VideoRepository -- Models.Video : "<<use>>"
+Controllers.VideosController o- Repositories.VideoRepository : "<<use>>"
+Controllers.VideosController o- Models.Video : "<<use>>"
+@enduml
